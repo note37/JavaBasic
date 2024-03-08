@@ -1,0 +1,39 @@
+package 자동차프로젝트;
+
+import java.util.Scanner;
+
+public class SportsCar extends Car{
+
+    SportsCar(){
+        fey = 8;
+        seat = 2;
+        speed = 250;
+        tank = 30;
+        name="페라리";
+    }
+    public void setSportsCar(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("이동할 승객수를 입력해 주세요");
+        people=sc.nextInt();
+        System.out.println("부가 기능을 선택 하실 건가요? [1]yes[2]no");
+        add=sc.nextInt();
+        if(add==1){
+            speed= (int)(speed*1.2);
+        }
+        if(people%seat==0){
+            totalpeople = (people / seat);
+            totaldistance = (distance * totalpeople);
+        } else if (people%seat>0) {
+            totalpeople = (people / seat)+1;
+            totaldistance = (distance * totalpeople);
+        }
+    }
+    public void SportsCarInfo(){
+        System.out.println("===="+name+"=====");
+        System.out.println("총 비용은"+(totaldistance/fey)*2000+"원");
+        System.out.println("총 주유횟수는 "+(totaldistance/(fey*tank))+1);
+        System.out.println("총 시간은: "+(totaldistance/speed)+"시"+(totaldistance%speed)+"분");
+        System.out.println(seat);
+        System.out.println(totaldistance);
+    }
+}
